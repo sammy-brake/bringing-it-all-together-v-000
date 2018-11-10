@@ -40,6 +40,4 @@ class Dog
 
 
 
-end 
-
-  
+end
