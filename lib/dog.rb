@@ -3,7 +3,7 @@ require 'pry'
 class Dog
   attr_accessor :name, :breed, :id
 
-  
+
 
   def self.create_table
     sql = <<-SQL
@@ -36,5 +36,10 @@ class Dog
     self
   end
   end
+
+
+
+
+end 
 
   
