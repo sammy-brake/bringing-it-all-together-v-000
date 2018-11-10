@@ -3,9 +3,7 @@ require 'pry'
 class Dog
   attr_accessor :name, :breed, :id
 
-  def initialize(attributes)
-    attributes.each { |key, value| self.send(("#{key}="), value)}
-  end
+  
 
   def self.create_table
     sql = <<-SQL
@@ -39,34 +37,4 @@ class Dog
   end
   end
 
-  def self.create(attributes)
-    dog = Dog.new(attributes)
-    dog.save
-    dog
-
-  end
-
-
-  def self.find_by_id(number)
-    sql = <<-SQL
-    SELECT *
-    FROM dogs
-    WHERE id = ?
-    SQL
-    row = DB[:conn].execute(sql, number)[0]
-    self.new(row[1], row[2], row[0])
-  end
-
-  def self.find_or_create_by(name:, breed:)
-    dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
-    if !dog.empty?
-      dog_data = dog[0]
-      dog = self.new(dog_data[1],dog_data[2],dog_data[0])
-    else
-      dog = self.create(name, breed)
-    end
-      dog
-  end
-
-
-end
+  
