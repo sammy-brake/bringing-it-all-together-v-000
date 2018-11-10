@@ -3,8 +3,8 @@ require 'pry'
 class Dog
   attr_accessor :name, :breed, :id
 
-  def initialize()
-  end 
+  def initialize({name:, breed:, id: nil})
+  end
 
   def self.create_table
     sql = <<-SQL
