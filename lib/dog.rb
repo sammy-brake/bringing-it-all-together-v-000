@@ -28,6 +28,8 @@ class Dog
   end
 
   def save
+    if self.id 
+     self.update
    sql = <<-SQL
    INSERT INTO dogs (name, breed)
    VALUES (?, ?)
@@ -54,8 +56,8 @@ class Dog
     self.new(name:row[1], breed:row[2], id:row[0])
   end
 
-  def self.find_or_create_by 
-  end 
+  def self.find_or_create_by
+  end
 
 
 end
